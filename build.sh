@@ -20,7 +20,7 @@ linux_wishbone_tool_url="https://github.com/xobs/wishbone-utils/releases/downloa
 linux_riscv_url="https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.2.0-2019.05.3-x86_64-linux-centos6.tar.gz"
 
 base="$(pwd)"
-output_name="fomu-toolchain-${ARCH}-${TRAVIS_TAG}"
+output_name="ecp5-toolchain-${ARCH}-${TRAVIS_TAG}"
 output="${base}/output/${output_name}"
 input="${base}/input"
 

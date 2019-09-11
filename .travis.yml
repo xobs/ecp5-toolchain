@@ -14,7 +14,7 @@ script: ./build.sh
 deploy:
   provider: releases
   api_key:
-    secure: "w/Ke1MTa3S97NEwcnsuqdSmH8Dvc+QE/JYpYjX+1UmB+rH/bTvlad3GZfRJN1sabah4ld+rINccAC9GPaYEz7dFuwaGKYg4RWgJ/i9gvytDJkDYASiHmc9JFDAivdkh/P3gA2zTH6STFzfzf7mPSpVbrQ5oxdZH98+USRBwB/7XUKxYNaPLUVO9HFlu1/LMHR7BZWozooSPtFaFxBNo+g8Uy22xs8yunndoprx3emGyWYD2qlSOJPV68/vNU9IL0FbrTDXMPtu3ALbavDFPGyt8Y8p43wxKrw4DIUKaIEV33r7uMOK67TGD5xggqSf7Jj+quDZIkgof+wRR4wrNeu9aXQMapMKgMiuFLlHJD2JvCpGZ/3yUCt/WaTXTnU2WhKZAJjiVG5WKO+RwkqKPypDqRgrBQCb8jqr5mK98CDM26jFRaMHHzlcmddPdby+hvhznZEUeIptx+S+bek2szd+Rxr4V/mLEeAeS6h9hIItEZkj6AhbaNRDL2N0/7P4mUIkrWVPq73FbddHF0NJASy1v4LZMge0tNMJF5duubURXyTjpUpPCwQWpxXfSs5l1KdkU00rdWiamJ/02Vavp04h1yTdjwoLaNtdyZQ7BY9DAKDfcEKRusY5fazuGjFw94Gi1UFUsEKaeu3ztyJmuLvHQgV7cW8XaOmRJRIQUgklQ="
+    secure: "A9jySS8IcM59kjH/3yLNIGqgaVEvRlOxQyWo9CGuahrcuOgLAshua791r3kKqf6pJ1S7SHunHQbLYL6LUDuOnqZ/IvBDGv+F663lOjC0tMJoWywjKbp4bc5u5KnMyz3l0APSg6HWE4csbhlY7R1Tx3ex4o18jPfVogu27I5EVGNc+LsTUuZZl+gU9hJoHtCBhkk5taryxzru90NBZcNuUSeiMIAsZLsJftjJiTK5QU+GdM/SzJlgvTCzq4lTjL/OlU5Y6p0fHHvL4LXmKRXfsPXOPFT7VNlIrUO1L8NakM7KNqCJbE79S3BAX24mzt01QbWyjIENCbOy7X+W0n2VnRrnGK/qzIenOLTb5Atfe7dg6pyUtwwQYVCqVp1U7ShbLjdTf8QaT9ecf6IVQjos03W+2QA8QFOcoE1M7RdYkjwHhfpoHUz1SrIBywx0Sm7UsLjpFf2VEU3fcqqZWD1pNdMO4RTTOHhQ5uyma4b2eTHOhASSDB9KJV8p1qwAVv29NUwqmL/DVIXxM0bttZv/7YPEJOLbH/whIkjV+bMuLXCKXK5/05zlSYOVWpGQA+EvkWpNpqdchZn8t1wjVx6xk5P/OynTFOKOnTmXioF5MZeW1L/pUbseYTFYqkPNqFmsF68pVF1w41LTAKDEvuqTENPEqfKdJjb4vT+5TI33DJw="
   file:
     - output/*.tar.gz
     - output/*.zip
@@ -24,7 +24,7 @@ deploy:
   file_glob: true
   skip_cleanup: true
   on:
-    repo: im-tomu/fomu-toolchain
+    repo: xobs/ecp5-toolchain
     all_branches: true
     tags: true
 branches:

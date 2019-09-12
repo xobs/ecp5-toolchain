@@ -11,7 +11,7 @@ Download the [latest release](https://github.com/xobs/ecp5-toolchain/releases/la
 * Windows Powershell: `$ENV:PATH = "[path-to-bin];" + $ENV:PATH`
 * Windows cmd.exe: `PATH=[path-to-bin];%PATH%`
 
-To confirm installation, run a command such as `nextpnr-ice40` or `yosys`.
+To confirm installation, run a command such as `nextpnr-ecp5` or `yosys`.
 
 ## What's included
 
@@ -20,7 +20,7 @@ This contains _almost_ everything you'll need to develop on Fomu:
 * **yosys** -- synthesis
 * **nextpnr-ecp5** -- place-and-route
 * **dfu-util** -- upload bitstream to the FPGA
-* **python3** -- required for `nextpnr-ice40` and to build litex projects
+* **python3** -- required for `nextpnr-ecp5` and to build litex projects
 * **riscv-gcc** -- compile code for Risc-V CPUs, such as the Risc-V softcore
 * **wishbone-tool** -- access the Wishbone debug bus over USB or SPI
 

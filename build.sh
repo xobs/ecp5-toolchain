@@ -55,36 +55,38 @@ checksum_output() {
 case "${ARCH}" in
     "windows")
         # Python 3.7.3 (which matches the version in nextpnr)
-        wget -O $input/python-${ARCH}.zip $win_python_url
+        wget -O $input/python-${ARCH}.zip "$win_python_url"
         cd $output/bin
         unzip -o $input/python-${ARCH}.zip
-        rm python37.zip # we already have this unzipped from nextpnr-ice40
+        rm python37.zip # we already have this unzipped from nextpnr-ecp5
         rm -f python37._pth # If this file is present, PYTHONPATH is very broken
 
         # Nextpnr
-        wget -O $input/nextpnr-${ARCH}.zip $win_nextpnr_url
-        cd $output/bin
+        wget -O $input/nextpnr-${ARCH}.zip "$win_nextpnr_url"
+        cd $output
         unzip -o $input/nextpnr-${ARCH}.zip
 
         # Yosys, icestorm, and dfu_util
-        wget -O $input/icestorm-${ARCH}.zip $win_yosys_url
+        wget -O $input/icestorm-${ARCH}.zip "$win_yosys_url"
         cd $output
         unzip -o $input/icestorm-${ARCH}.zip
 
         # Teraterm Terminal
-        wget -O $input/teraterm-${ARCH}.zip $win_teraterm_url
+        wget -O $input/teraterm-${ARCH}.zip "$win_teraterm_url"
         cd $output/bin
         unzip -o $input/teraterm-${ARCH}.zip
+        mv teraterm-*/* .
+        rmdir teraterm-* || true
 
         # Wishbone Tool
-        wget -O $input/wishbone-tool-${ARCH}.tar.gz $win_wishbone_tool_url
+        wget -O $input/wishbone-tool-${ARCH}.tar.gz "$win_wishbone_tool_url"
         cd $output/bin
         tar xvzf $input/wishbone-tool-${ARCH}.tar.gz
 
         # Riscv Toolchain
         # Note that we want to strip the front part of the path.
         # Also, we do "cp -l" then "rm -rf" to merge the directories.
-        wget -O $input/riscv-${ARCH}.zip  $win_riscv_url
+        wget -O $input/riscv-${ARCH}.zip  "$win_riscv_url"
         cd $input
         mkdir re
         cd re
@@ -94,7 +96,7 @@ case "${ARCH}" in
         rm -rf re
 
         # Make.exe
-        wget -O $input/make-${ARCH}.zip $win_make_url
+        wget -O $input/make-${ARCH}.zip "$win_make_url"
         cd $output
         unzip -o $input/make-${ARCH}.zip
 
@@ -105,24 +107,24 @@ case "${ARCH}" in
 
     "macos")
         # Nextpnr
-        wget -O $input/nextpnr-${ARCH}.tar.gz $mac_nextpnr_url
+        wget -O $input/nextpnr-${ARCH}.tar.gz "$mac_nextpnr_url"
         cd $output
         tar xvzf $input/nextpnr-${ARCH}.tar.gz
 
         # Yosys, icestorm, and dfu_util
-        wget -O $input/icestorm-${ARCH}.tar.gz $mac_yosys_url
+        wget -O $input/icestorm-${ARCH}.tar.gz "$mac_yosys_url"
         cd $output
         tar xvzf $input/icestorm-${ARCH}.tar.gz
 
         # Wishbone Tool
-        wget -O $input/wishbone-tool-${ARCH}.tar.gz $mac_wishbone_tool_url
+        wget -O $input/wishbone-tool-${ARCH}.tar.gz "$mac_wishbone_tool_url"
         cd $output/bin
         tar xvzf $input/wishbone-tool-${ARCH}.tar.gz
 
         # Riscv Toolchain
         # Note that we want to strip the front part of the path.
         # Also, we do "cp -l" then "rm -rf" to merge the directories.
-        wget -O $input/riscv-${ARCH}.tar.gz  $mac_riscv_url
+        wget -O $input/riscv-${ARCH}.tar.gz  "$mac_riscv_url"
         cd $input
         mkdir re
         cd re
@@ -138,24 +140,24 @@ case "${ARCH}" in
 
     "linux_x86_64")
         # Nextpnr
-        wget -O $input/nextpnr-${ARCH}.tar.gz $linux_nextpnr_url
+        wget -O $input/nextpnr-${ARCH}.tar.gz "$linux_nextpnr_url"
         cd $output
         tar xvzf $input/nextpnr-${ARCH}.tar.gz
 
         # Yosys, icestorm, and dfu_util
-        wget -O $input/yosys-${ARCH}.tar.gz $linux_yosys_url
+        wget -O $input/yosys-${ARCH}.tar.gz "$linux_yosys_url"
         cd $output
         tar xvzf $input/yosys-${ARCH}.tar.gz
 
         # Wishbone Tool
-        wget -O $input/wishbone-tool-${ARCH}.tar.gz $linux_wishbone_tool_url
+        wget -O $input/wishbone-tool-${ARCH}.tar.gz "$linux_wishbone_tool_url"
         cd $output/bin
         tar xvzf $input/wishbone-tool-${ARCH}.tar.gz
 
         # Riscv Toolchain
         # Note that we want to strip the front part of the path.
         # Also, we do "cp -l" then "rm -rf" to merge the directories.
-        wget -O $input/riscv-${ARCH}.tar.gz  $linux_riscv_url
+        wget -O $input/riscv-${ARCH}.tar.gz "$linux_riscv_url"
         cd $input
         mkdir re
         cd re

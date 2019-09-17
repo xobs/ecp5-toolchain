@@ -100,6 +100,9 @@ case "${ARCH}" in
         cd $output
         unzip -o $input/make-${ARCH}.zip
 
+	# This causes issues on Windows, which is case-insensitive
+	rm -f $output/bin/license.txt $output/bin/LICENSE.txt
+
         cd $base/output
         zip -r $output_name.zip $output_name
         checksum_output .zip

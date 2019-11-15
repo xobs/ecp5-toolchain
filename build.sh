@@ -107,7 +107,9 @@ case "${ARCH}" in
         wget -O $input/git-${ARCH}.tar.bz2 "$win_git_url"
         cd $output
         tar xvjf $input/git-${ARCH}.tar.bz2
-        rm -rf input
+        mv Library/* .
+        rmdir Library
+        rm -rf info
 
         # Extra files on Windows (sh.exe, cp.exe, etc.)
         cp -a $base/extras/windows/* $output/bin
@@ -152,13 +154,13 @@ case "${ARCH}" in
         wget -O $input/git-${ARCH}.tar.bz2 "$mac_git_url"
         cd $output
         tar xvjf $input/git-${ARCH}.tar.bz2
-        rm -rf input
+        rm -rf info
 
         # Make
         wget -O $input/make-${ARCH}.tar.bz2 "$mac_make_url"
         cd $output
         tar xvjf $input/make-${ARCH}.tar.bz2
-        rm -rf input
+        rm -rf info
 
         cd $base/output
         zip -r $output_name.zip $output_name
@@ -197,13 +199,13 @@ case "${ARCH}" in
         wget -O $input/git-${ARCH}.tar.bz2 "$linux_git_url"
         cd $output
         tar xvjf $input/git-${ARCH}.tar.bz2
-        rm -rf input
+        rm -rf info
 
         # Make
         wget -O $input/make-${ARCH}.tar.bz2 "$linux_make_url"
         cd $output
         tar xvjf $input/make-${ARCH}.tar.bz2
-        rm -rf input
+        rm -rf info
 
         cd $base/output
         tar cvzf $output_name.tar.gz $output_name

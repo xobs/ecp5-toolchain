@@ -107,7 +107,7 @@ case "${ARCH}" in
         wget -O $input/git-${ARCH}.tar.bz2 "$win_git_url"
         cd $output
         tar xvjf $input/git-${ARCH}.tar.bz2
-        mv Library/* .
+        mv -f Library/* .
         rmdir Library
         rm -rf info
 

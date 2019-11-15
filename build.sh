@@ -7,17 +7,22 @@ win_wishbone_tool_url="https://github.com/xobs/wishbone-utils/releases/download/
 win_riscv_url="https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-w64-mingw32.zip"
 win_python_url="https://www.python.org/ftp/python/3.7.3/python-3.7.3-embed-amd64.zip"
 win_make_url="https://sourceforge.net/projects/ezwinports/files/make-4.2.1-without-guile-w32-bin.zip/download"
+win_git_url="https://anaconda.org/anaconda/git/2.23.0/download/win-64/git-2.23.0-h6bb4b03_0.tar.bz2"
 win_teraterm_url="https://osdn.net/frs/redir.php?m=constant&f=ttssh2%2F71232%2Fteraterm-4.103.zip"
 
 mac_nextpnr_url="https://github.com/xobs/toolchain-nextpnr-ecp5/releases/download/v1.5.3/nextpnr-ecp5-darwin-v1.5.3.tar.gz"
 mac_yosys_url="https://github.com/xobs/toolchain-icestorm/releases/download/v1.38-fomu/toolchain-icestorm-darwin-v1.38-fomu.tar.gz"
 mac_wishbone_tool_url="https://github.com/xobs/wishbone-utils/releases/download/v0.4.7/wishbone-tool-v0.4.7-x86_64-apple-darwin.tar.gz"
 mac_riscv_url="https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-apple-darwin.tar.gz"
+mac_make_url="https://anaconda.org/conda-forge/make/4.2/download/osx-64/make-4.2-h01d97ff_0.tar.bz2"
+mac_git_url="https://anaconda.org/anaconda/git/2.23.0/download/osx-64/git-2.23.0-pl526h6951d83_0.tar.bz2"
 
 linux_nextpnr_url="https://github.com/xobs/toolchain-nextpnr-ecp5/releases/download/v1.5.3/nextpnr-ecp5-linux_x86_64-v1.5.3.tar.gz"
 linux_yosys_url="https://github.com/xobs/toolchain-icestorm/releases/download/v1.38-fomu/toolchain-icestorm-linux_x86_64-v1.38-fomu.tar.gz"
 linux_wishbone_tool_url="https://github.com/xobs/wishbone-utils/releases/download/v0.4.7/wishbone-tool-v0.4.7-x86_64-unknown-linux-gnu.tar.gz"
 linux_riscv_url="https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-centos6.tar.gz"
+linux_make_url="https://anaconda.org/conda-forge/make/4.2/download/linux-64/make-4.2-h516909a_0.tar.bz2"
+linux_git_url="https://anaconda.org/anaconda/git/2.23.0/download/linux-64/git-2.23.0-pl526hacde149_0.tar.bz2"
 
 base="$(pwd)"
 output_name="ecp5-toolchain-${ARCH}-${TRAVIS_TAG}"
@@ -98,8 +103,14 @@ case "${ARCH}" in
         cd $output
         unzip -o $input/make-${ARCH}.zip
 
-	# This causes issues on Windows, which is case-insensitive
-	rm -f $output/bin/license.txt $output/bin/LICENSE.txt
+        # Git
+        wget -O $input/git-${ARCH}.tar.bz2 "$win_git_url"
+        cd $output
+        tar xvjf $input/git-${ARCH}.tar.bz2
+        rm -rf input
+
+        # This causes issues on Windows, which is case-insensitive
+        rm -f $output/bin/license.txt $output/bin/LICENSE.txt
 
         cd $base/output
         zip -r $output_name.zip $output_name
@@ -134,6 +145,18 @@ case "${ARCH}" in
         cd ..
         rm -rf re
 
+        # Git
+        wget -O $input/git-${ARCH}.tar.bz2 "$mac_git_url"
+        cd $output
+        tar xvjf $input/git-${ARCH}.tar.bz2
+        rm -rf input
+
+        # Make
+        wget -O $input/make-${ARCH}.tar.bz2 "$mac_make_url"
+        cd $output
+        tar xvjf $input/make-${ARCH}.tar.bz2
+        rm -rf input
+
         cd $base/output
         zip -r $output_name.zip $output_name
         checksum_output .zip
@@ -166,6 +189,18 @@ case "${ARCH}" in
         cp -f -l -r */* $output
         cd ..
         rm -rf re
+
+        # Git
+        wget -O $input/git-${ARCH}.tar.bz2 "$linux_git_url"
+        cd $output
+        tar xvjf $input/git-${ARCH}.tar.bz2
+        rm -rf input
+
+        # Make
+        wget -O $input/make-${ARCH}.tar.bz2 "$linux_make_url"
+        cd $output
+        tar xvjf $input/make-${ARCH}.tar.bz2
+        rm -rf input
 
         cd $base/output
         tar cvzf $output_name.tar.gz $output_name

@@ -110,7 +110,7 @@ case "${ARCH}" in
         rm -rf input
 
         # Extra files on Windows (sh.exe, cp.exe, etc.)
-        cp -a $base/* $output/bin
+        cp -a $base/extras/windows/* $output/bin
 
         # This causes issues on Windows, which is case-insensitive
         rm -f $output/bin/license.txt $output/bin/LICENSE.txt
